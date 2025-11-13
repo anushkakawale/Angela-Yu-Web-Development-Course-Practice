@@ -1,0 +1,94 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4 fw-bold text-primary">
+            ✏️ Edit Your Blog Post
+          </h2>
+
+          <form action="/edit/<%= post.id %>" method="POST">
+            <!-- Title -->
+            <div class="mb-4">
+              <label for="title" class="form-label fw-semibold">Post Title</label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                class="form-control form-control-lg border-primary-subtle"
+                value="<%= post.title %>"
+                required
+              />
+            </div>
+
+            <!-- Content -->
+            <div class="mb-4">
+              <label for="content" class="form-label fw-semibold">Post Content</label>
+              <textarea
+                name="content"
+                id="content"
+                rows="8"
+                class="form-control form-control-lg border-primary-subtle"
+                required
+              ><%= post.content %></textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <a href="/" class="btn btn-outline-secondary px-4">
+                ← Cancel
+              </a>
+              <button type="submit" class="btn btn-success px-5">
+                💾 Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background: linear-gradient(135deg, #f8f9fa, #eef3f9);
+    font-family: "Poppins", sans-serif;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 1.25rem;
+  }
+
+  .form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 8px rgba(25, 135, 84, 0.2);
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .btn {
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  .btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #6c757d;
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+  }
+
+  .btn-success:hover {
+    background-color: #218838;
+  }
+</style>
+
+<%- include("partials/footer.ejs") %>
